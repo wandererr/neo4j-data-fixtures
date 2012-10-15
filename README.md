@@ -1,17 +1,17 @@
-# Doctrine Data Fixtures Extension
+# Neo4j Data Fixtures Extension
 
 This extension aims to provide a simple way to manage and execute the loading of data fixtures
-for the Doctrine ORM or ODM. You can write fixture classes by implementing the
-Doctrine\Common\DataFixtures\FixtureInterface interface:
+for the Neo4j OGM. You can write fixture classes by implementing the
+Expio\Common\Neo4jDataFixtures\FixtureInterface interface:
 
     namespace MyDataFixtures;
 
-    use Doctrine\Common\Persistence\ObjectManager;
-    use Doctrine\Common\DataFixtures\FixtureInterface;
+    use Kwattro\Neo4j\GraphManager;
+    use Expio\Common\Neo4jDataFixtures\FixtureInterface;
 
     class LoadUserData implements FixtureInterface
     {
-        public function load(ObjectManager $manager)
+        public function load(GraphManager $manager)
         {
             $user = new User();
             $user->setUsername('jwage');
@@ -24,7 +24,7 @@ Doctrine\Common\DataFixtures\FixtureInterface interface:
 
 Now you can begin adding the fixtures to a loader instance:
 
-    use Doctrine\Common\DataFixtures\Loader;
+    use Expio\Common\Neo4jDataFixtures\Loader;
     use MyDataFixtures\LoadUserData;
 
     $loader = new Loader();
@@ -40,11 +40,11 @@ You can get the added fixtures using the getFixtures() method:
 
 Now you can easily execute the fixtures:
 
-    use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
-    use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+    use Expio\Common\Neo4jDataFixtures\Executor\OGMExecutor;
+    use Expio\Common\Neo4jDataFixtures\Purger\OGMPurger;
 
-    $purger = new ORMPurger();
-    $executor = new ORMExecutor($em, $purger);
+    $purger = new OGMPurger();
+    $executor = new OGMExecutor($em, $purger);
     $executor->execute($loader->getFixtures());
 
 If you want to append the fixtures instead of purging before loading then pass true
@@ -60,8 +60,8 @@ a relation. Here is an example fixtures for **Role** and **User** relation
 
     namespace MyDataFixtures;
 
-    use Doctrine\Common\DataFixtures\AbstractFixture;
-    use Doctrine\Common\Persistence\ObjectManager;
+    use Expio\Common\Neo4jDataFixtures\AbstractFixture;
+    use HireVoice\Neo4j\EntityManager;
 
     class LoadUserRoleData extends AbstractFixture
     {
@@ -86,8 +86,8 @@ And the **User** data loading fixture:
 
     namespace MyDataFixtures;
 
-    use Doctrine\Common\DataFixtures\AbstractFixture;
-    use Doctrine\Common\Persistence\ObjectManager;
+    use Expio\Common\Neo4jDataFixtures\AbstractFixture;
+    use HireVoice\Neo4j\EntityManager;
 
     class LoadUserData extends AbstractFixture
     {
@@ -118,9 +118,9 @@ Set the order manually:
 
     namespace MyDataFixtures;
 
-    use Doctrine\Common\DataFixtures\AbstractFixture;
-    use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-    use Doctrine\Common\Persistence\ObjectManager;
+    use Expio\Common\Neo4jDataFixtures\AbstractFixture;
+    use Expio\Common\Neo4jDataFixtures\OrderedFixtureInterface;
+    use HireVoice\Neo4j\EntityManager;
 
     class MyFixture extends AbstractFixture implements OrderedFixtureInterface
     {
@@ -139,9 +139,9 @@ Provide an array of fixture class names:
 
     namespace MyDataFixtures;
 
-    use Doctrine\Common\DataFixtures\AbstractFixture;
-    use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-    use Doctrine\Common\Persistence\ObjectManager;
+    use Expio\Common\Neo4jDataFixtures\AbstractFixture;
+    use Expio\Common\Neo4jDataFixtures\DependentFixtureInterface;
+    use HireVoice\Neo4j\EntityManager;
 
     class MyFixture extends AbstractFixture implements DependentFixtureInterface
     {

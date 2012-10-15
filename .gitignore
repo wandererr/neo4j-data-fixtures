@@ -1,2 +1,2 @@
 tests/phpunit.xml
-tests/Doctrine/Tests/Common/DataFixtures/temp/*
+tests/Expio/Tests/Common/Neo4jDataFixtures/temp/*
