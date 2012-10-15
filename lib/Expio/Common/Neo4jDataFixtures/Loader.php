@@ -178,7 +178,7 @@ class Loader
         if ($rc->isAbstract()) return true;
 
         $interfaces = class_implements($className);
-        return in_array('Doctrine\Common\Neo4jDataFixtures\FixtureInterface', $interfaces) ? false : true;
+        return in_array('Expio\Common\Neo4jDataFixtures\FixtureInterface', $interfaces) ? false : true;
     }
 
     /**
