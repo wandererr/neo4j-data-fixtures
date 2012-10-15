@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Data Fixtures for Neo4j OGM, based on Doctrine Data Fixtures",
     "keywords": ["database"],
-    "homepage": "http://www.doctrine-project.org",
+    "homepage": "https://github.com/sgarner/neo4j-data-fixtures",
     "license": "MIT",
     "authors": [
         {"name": "Simon Garner", "email": "sgarner@expio.co.nz"},
