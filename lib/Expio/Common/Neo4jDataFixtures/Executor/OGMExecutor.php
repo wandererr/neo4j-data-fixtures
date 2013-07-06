@@ -44,8 +44,6 @@ class OGMExecutor extends AbstractExecutor
             $this->purger->setEntityManager($em);
         }
         parent::__construct($em);
-        $this->listener = new OGMReferenceListener($this->referenceRepository);
-        $em->getEventManager()->addEventSubscriber($this->listener);
     }
 
     /**
@@ -61,14 +59,7 @@ class OGMExecutor extends AbstractExecutor
     /** @inheritDoc */
     public function setReferenceRepository(ReferenceRepository $referenceRepository)
     {
-        $this->em->getEventManager()->removeEventListener(
-            $this->listener->getSubscribedEvents(),
-            $this->listener
-        );
-
         $this->referenceRepository = $referenceRepository;
-        $this->listener = new OGMReferenceListener($this->referenceRepository);
-        $this->em->getEventManager()->addEventSubscriber($this->listener);
     }
 
     /** @inheritDoc */
