@@ -67,6 +67,8 @@ class OGMPurger implements PurgerInterface
     /** @inheritDoc */
     public function purge()
     {
-        throw new \Exception('Purging has not been implemented. Use append mode');
+	$neo4jClient = $this->em->getClient();
+        $query = new \Everyman\Neo4j\Cypher\Query($neo4jClient, "start n=node(*) match n-[r?]->() delete r where id(n) <> 0 delete n");
+	$neo4jClient->executeCypherQuery($query);
     }
 }
