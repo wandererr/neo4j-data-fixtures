@@ -1,13 +1,12 @@
 {
-    "name": "expio/neo4j-data-fixtures",
+    "name": "wandererr/neo4j-data-fixtures",
     "type": "library",
-    "description": "Data Fixtures for Neo4j OGM, based on Doctrine Data Fixtures",
+    "description": "Patched Data Fixtures for Neo4j OGM, based expio's package",
     "keywords": ["database"],
-    "homepage": "https://github.com/sgarner/neo4j-data-fixtures",
+    "homepage": "https://github.com/wandererr/neo4j-data-fixtures",
     "license": "MIT",
     "authors": [
-        {"name": "Simon Garner", "email": "sgarner@expio.co.nz"},
-        {"name": "Jonathan Wage", "email": "jonwage@gmail.com"}
+        {"name": "Sam Korvin", "email": "digressionary@gmail.com"}
     ],
     "require": {
         "php": ">=5.3.2",
