@@ -70,7 +70,7 @@ class OGMExecutor extends AbstractExecutor
             $executor->purge();
         }
         foreach ($fixtures as $fixture) {
-            $executor->load($em, $fixture);
+            $executor->load($this->em, $fixture);
         }
     }
 }
