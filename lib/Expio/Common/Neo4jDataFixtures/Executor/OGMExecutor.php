@@ -66,13 +66,11 @@ class OGMExecutor extends AbstractExecutor
     public function execute(array $fixtures, $append = false)
     {
         $executor = $this;
-        $this->em->transactional(function(EntityManager $em) use ($executor, $fixtures, $append) {
-            if ($append === false) {
-                $executor->purge();
-            }
-            foreach ($fixtures as $fixture) {
-                $executor->load($em, $fixture);
-            }
-        });
+        if ($append === false) {
+            $executor->purge();
+        }
+        foreach ($fixtures as $fixture) {
+            $executor->load($em, $fixture);
+        }
     }
 }
