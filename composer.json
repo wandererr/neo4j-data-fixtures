@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "wandererr/neo4jphp-ogm": "*"
+        "hirevoice/neo4jphp-ogm": "*"
     },
     "autoload": {
         "psr-0": { "Expio\\Common\\Neo4jDataFixtures": "lib/" }
