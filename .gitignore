@@ -1,2 +1,5 @@
 tests/phpunit.xml
 tests/Expio/Tests/Common/Neo4jDataFixtures/temp/*
+/nbproject/private/
+nbproject/project.properties
+nbproject/project.xml

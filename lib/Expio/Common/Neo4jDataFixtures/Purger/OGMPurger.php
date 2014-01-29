@@ -68,7 +68,7 @@ class OGMPurger implements PurgerInterface
     public function purge()
     {
 		$neo4jClient = $this->em->getClient();
-        $query = new \Everyman\Neo4j\Cypher\Query($neo4jClient, "start n=node(*) match n-[r?]-() delete r where id(n) <> 0 delete n");
+        $query = new \Everyman\Neo4j\Cypher\Query($neo4jClient, "start n=node(*) optional match n-[r]-() delete r,n");
 		$neo4jClient->executeCypherQuery($query);
     }
 }
